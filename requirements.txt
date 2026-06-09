@@ -1,0 +1,8 @@
+Django>=6,<6.1
+wagtail>=7.4,<7.5
+psycopg2-binary>=2.9,<3
+gunicorn>=26,<27
+django-environ>=0.13,<1
+whitenoise>=6.12,<7
+Pillow>=12,<13
+requests>=2.34,<3
