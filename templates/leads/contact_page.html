@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block title %}{{ page.intro_heading }} — CBA Education{% endblock %}
+
+{% block content %}
+<section class="contact-hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>{{ page.intro_heading }}</h1>
+                {% if page.intro_text %}
+                    <p>{{ page.intro_text }}</p>
+                {% endif %}
+                <div class="d-flex flex-column flex-sm-row gap-3">
+                    <a href="#contact-form" class="btn btn-custom-primary mb-3 mb-sm-0 mr-sm-3">Send Message</a>
+                    {% if page.faq_section %}
+                        <a href="#faq" class="btn btn-custom-outline">View FAQ</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact-form" class="py-5">
+    <div class="container">
+        <div class="contact-form">
+            <h3 class="mb-4">Send us a Message</h3>
+            <form action="{% pageurl page %}" method="POST" novalidate>
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {% include "leads/includes/form_field.html" with field=form.first_name %}
+                    </div>
+                    <div class="col-md-6">
+                        {% include "leads/includes/form_field.html" with field=form.last_name %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {% include "leads/includes/form_field.html" with field=form.email_address %}
+                    </div>
+                    <div class="col-md-6">
+                        {% include "leads/includes/form_field.html" with field=form.confirm_email %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {% include "leads/includes/form_field.html" with field=form.phone_number %}
+                    </div>
+                    <div class="col-md-6">
+                        {% include "leads/includes/form_field.html" with field=form.reason_for_contacting %}
+                    </div>
+                </div>
+
+                {% include "leads/includes/form_field.html" with field=form.company_organization %}
+
+                {% include "leads/includes/form_field.html" with field=form.message %}
+
+                <button type="submit" class="btn btn-custom-primary">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% if page.faq_section %}
+    {% for block in page.faq_section %}
+        {% include_block block %}
+    {% endfor %}
+{% endif %}
+{% endblock %}

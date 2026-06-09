@@ -1,0 +1,37 @@
+{% load static wagtailsettings_tags cba_tags %}
+{% get_settings %}
+
+<footer class="footer">
+    <div class="section-inner">
+        <div class="row align-items-start footer-top">
+            <div class="col-md-4">
+                <div class="footer-brand d-flex align-items-center">
+                    <img src="{% static 'cba/images/logo.svg' %}" alt="Center for Business Acceleration">
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <nav class="footer-nav" aria-label="Footer">
+                    <ul class="footer-main-links list-unstyled mb-0">
+                        {% for item in settings.core.FooterSettings.footer_links %}
+                            <li><a href="{% resolve_link_url item.value %}">{{ item.value.label }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% if settings.core.FooterSettings.legal_links %}
+                        <div class="footer-legal-links">
+                            {% for item in settings.core.FooterSettings.legal_links %}
+                                <a href="{% resolve_link_url item.value %}">{{ item.value.label }}</a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-copyright text-center">
+            <p class="mb-0">© {{ settings.core.FooterSettings.copyright_text }}</p>
+        </div>
+    </div>
+</footer>

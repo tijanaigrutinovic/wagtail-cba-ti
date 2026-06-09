@@ -1,0 +1,75 @@
+{% load wagtailimages_tags cba_tags %}
+{% if value.style == "accreditation" %}
+<section class="cba-home__block cba-home__block--surface cba-home__accredit"{% if value.section_heading %} aria-labelledby="cards-{{ block.id }}"{% endif %}>
+    {% if value.section_heading %}
+        <h2 id="cards-{{ block.id }}" class="cba-home__section-heading cba-home__section-heading--center">{{ value.section_heading }}</h2>
+    {% endif %}
+    {% if value.section_subheading %}
+        <p class="cba-home__accredit-intro">{{ value.section_subheading }}</p>
+    {% endif %}
+    <div class="cba-home__accredit-grid">
+        {% for card in value.cards %}
+            {% if card.link|link_url %}
+                <a class="cba-home__accredit-card" href="{% resolve_link_url card.link %}"{% if card.external_link %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                    <span class="cba-home__accredit-card-title">{{ card.heading }}</span>
+                    <span class="cba-home__accredit-card-text">{{ card.body }}</span>
+                    {% if card.link_meta %}
+                        <span class="cba-home__accredit-card-meta">{{ card.link_meta }} <span aria-hidden="true">↗</span></span>
+                    {% endif %}
+                </a>
+            {% else %}
+                <article class="cba-home__accredit-card">
+                    <span class="cba-home__accredit-card-title">{{ card.heading }}</span>
+                    <span class="cba-home__accredit-card-text">{{ card.body }}</span>
+                </article>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{% elif value.style == "pillar" %}
+<section class="cba-home__block cba-home__block--white cba-home__org-resilience">
+    {% if value.section_heading %}
+        <h2 class="cba-home__section-heading cba-home__section-heading--center">{{ value.section_heading }}</h2>
+    {% endif %}
+    <div class="cba-home__sector-grid">
+        {% for card in value.cards %}
+            <article class="cba-home__sector-card">
+                <h3 class="cba-home__pillar-title">{{ card.heading }}</h3>
+                <p>{{ card.body }}</p>
+                {% if card.link_text and card.link|link_url %}
+                    <a class="cba-home__sector-learn" href="{% resolve_link_url card.link %}">{{ card.link_text }}</a>
+                {% endif %}
+            </article>
+        {% endfor %}
+    </div>
+</section>
+{% else %}
+<section class="cba-home__block cba-home__block--white">
+    {% if value.section_heading %}
+        <h2 class="cba-home__section-heading cba-home__section-heading--center">{{ value.section_heading }}</h2>
+    {% endif %}
+    {% if value.section_subheading %}
+        <p class="cba-home__section-lead">{{ value.section_subheading }}</p>
+    {% endif %}
+    <div class="cba-home__sector-grid cba-home__sector-grid--cols-{{ value.columns }}">
+        {% for card in value.cards %}
+            <article class="cba-home__sector-card">
+                {% if card.icon %}
+                    <div class="cba-home__card-icon">
+                        {% if card.icon.file.name|slice:"-4:" == ".svg" %}
+                            <img src="{% cms_image_url card.icon %}" alt="" width="64" height="64" loading="lazy" decoding="async" />
+                        {% else %}
+                            {% image card.icon width-64 alt="" %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+                <h3 class="cba-home__pillar-title">{{ card.heading }}</h3>
+                <p>{{ card.body }}</p>
+                {% if card.link_text and card.link|link_url %}
+                    <a class="cba-home__sector-learn" href="{% resolve_link_url card.link %}"{% if card.external_link %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ card.link_text }}</a>
+                {% endif %}
+            </article>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}

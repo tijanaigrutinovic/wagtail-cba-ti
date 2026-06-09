@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block title %}{{ page.title }} — CBA Education{% endblock %}
+
+{% block content %}
+{% if page.slug == "terms" %}
+    {% with hero_class="terms-hero" badge_class="terms-badges" content_class="terms-content" %}
+        {% include "content/includes/legal_page_sections.html" %}
+    {% endwith %}
+{% else %}
+    {% with hero_class="privacy-hero" badge_class="privacy-badges" content_class="privacy-content" %}
+        {% include "content/includes/legal_page_sections.html" %}
+    {% endwith %}
+{% endif %}
+{% endblock %}

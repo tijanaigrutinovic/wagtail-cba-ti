@@ -1,0 +1,14 @@
+{
+  "name": "wagtail-cba-ti",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build:css": "sass frontend/scss/main.scss cba_site/static/css/main.css --style=compressed --no-source-map",
+    "watch:css": "sass frontend/scss/main.scss cba_site/static/css/main.css --watch --style=expanded --source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

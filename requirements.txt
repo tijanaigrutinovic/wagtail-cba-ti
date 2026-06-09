@@ -5,4 +5,5 @@ gunicorn>=26,<27
 django-environ>=0.13,<1
 whitenoise>=6.12,<7
 Pillow>=12,<13
+beautifulsoup4>=4.12,<5
 requests>=2.34,<3

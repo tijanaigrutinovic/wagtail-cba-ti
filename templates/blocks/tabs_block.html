@@ -1,0 +1,50 @@
+{% load wagtailimages_tags cba_tags %}
+<section class="cba-home__learning"{% if value.section_id %} id="{{ value.section_id }}"{% endif %}{% if value.section_heading %} aria-labelledby="learn-heading-{{ block.id }}"{% endif %}>
+    {% if value.section_heading %}
+        <h2 id="learn-heading-{{ block.id }}" class="cba-home__section-heading">{{ value.section_heading }}</h2>
+    {% endif %}
+    {% if value.section_subheading %}
+        <p class="cba-home__section-lead">{{ value.section_subheading }}</p>
+    {% endif %}
+
+    {% for tab in value.tabs %}
+        <input class="cba-home__tab-hack" type="radio" name="paths-{{ block.id }}" id="tab-{{ block.id }}-{{ forloop.counter }}"{% if forloop.first %} checked="checked"{% endif %} />
+    {% endfor %}
+
+    <div class="cba-home__tab-labels">
+        {% for tab in value.tabs %}
+            <label class="cba-home__tab-pill" for="tab-{{ block.id }}-{{ forloop.counter }}">{{ tab.tab_label }}</label>
+        {% endfor %}
+    </div>
+
+    <div class="cba-home__tab-panels">
+        {% for tab in value.tabs %}
+            <div class="cba-home__tab-panel cba-home__tab-panel--{{ forloop.counter }}">
+                <div>
+                    <h3>{{ tab.heading }}</h3>
+                    <p>{{ tab.body }}</p>
+                    {% if tab.button_text and tab.button_link|link_url %}
+                        <a class="cba-home__btn-tab" href="{% resolve_link_url tab.button_link %}">{{ tab.button_text }}</a>
+                    {% endif %}
+                </div>
+                {% if tab.image %}
+                    <div class="cba-home__tab-panel-img-wrap">
+                        {% if tab.image.file.name|slice:"-4:" == ".svg" %}
+                            <img
+                                class="cba-home__tab-panel-img"
+                                src="{% cms_image_url tab.image %}"
+                                alt="{{ tab.image_alt|default:tab.heading }}"
+                                width="420"
+                                height="280"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        {% else %}
+                            {% image tab.image width-420 class="cba-home__tab-panel-img" alt=tab.image_alt|default:tab.heading loading="lazy" decoding="async" %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</section>

@@ -1,0 +1,33 @@
+// CBA Education public site — compiled to cba_site/static/css/main.css
+// Source copied from cba-theme/django-theme/lms/static/sass (kept in sync).
+
+// Foundation
+@import "foundation/variables";
+@import "foundation/mixins";
+@import "foundation/base";
+@import "foundation/extras";
+
+// Layout
+@import "base/layout";
+
+// Global partials
+@import "partials/header";
+@import "partials/footer";
+@import "partials/course";
+
+// Components
+@import "components/buttons";
+@import "components/cards";
+@import "components/tabs";
+@import "components/navbar";
+
+// Pages
+@import "pages/homepage";
+@import "pages/contact";
+@import "pages/static-pages";
+
+// Themes
+@import "themes/dark-mode";
+
+// Wagtail-only overrides (CMS pages/blocks not in Open edX theme)
+@import "wagtail/overrides";

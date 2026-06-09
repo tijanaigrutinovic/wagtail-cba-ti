@@ -1,0 +1,29 @@
+{% load wagtailimages_tags cba_tags %}
+<section class="cba-home__hero" aria-label="Hero">
+    {% if value.background_image %}
+        {% if value.background_image.file.name|slice:"-4:" == ".svg" %}
+            <img
+                class="cba-home__hero-bg"
+                src="{% cms_image_url value.background_image %}"
+                alt="{{ value.background_image_alt }}"
+                decoding="async"
+                fetchpriority="high"
+            />
+        {% else %}
+            {% image value.background_image fill-1920x1080 class="cba-home__hero-bg" alt=value.background_image_alt %}
+        {% endif %}
+    {% endif %}
+    <div class="cba-home__hero-overlay" aria-hidden="true"></div>
+    <div class="cba-home__hero-inner">
+        <h1 class="cba-home__hero-title">{{ value.heading }}</h1>
+        <p class="cba-home__hero-lead">{{ value.subheading }}</p>
+        <div class="cba-home__hero-actions">
+            {% if value.primary_button_text %}
+                <a class="cba-home__btn-hero" href="{% resolve_link_url value.primary_button_link %}">{{ value.primary_button_text }}</a>
+            {% endif %}
+            {% if value.secondary_button_text and value.secondary_button_link|link_url %}
+                <a class="cba-home__btn-hero-secondary" href="{% resolve_link_url value.secondary_button_link %}">{{ value.secondary_button_text }}</a>
+            {% endif %}
+        </div>
+    </div>
+</section>

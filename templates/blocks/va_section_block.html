@@ -1,0 +1,19 @@
+{% load cba_tags %}
+<section class="cba-home__block cba-home__block--surface cba-home__va"{% if value.section_id %} id="{{ value.section_id }}"{% endif %}>
+    <h2 class="cba-home__section-heading">{{ value.heading }}</h2>
+    <div class="cba-home__va-highlight">{{ value.highlight }}</div>
+    {% if value.intro %}
+        <p class="cba-home__va-text">{{ value.intro }}</p>
+    {% endif %}
+    <div class="cba-home__va-subsections">
+        {% for sub in value.subsections %}
+            <div class="cba-home__va-sub">
+                <h3 class="cba-home__va-subtitle">{{ sub.heading }}</h3>
+                <p>{{ sub.body }}</p>
+                {% if sub.button_text and sub.button_link|link_url %}
+                    <a class="cba-home__btn-tab" href="{% resolve_link_url sub.button_link %}">{{ sub.button_text }}</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</section>

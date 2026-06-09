@@ -1,0 +1,16 @@
+{% load wagtailimages_tags cba_tags %}
+<p class="cba-home__quote{% if value.prominent %} cba-home__quote--prominent{% endif %}">
+    {% if value.author_image %}
+        <span class="cba-home__quote-avatar">
+            {% if value.author_image.file.name|slice:"-4:" == ".svg" %}
+                <img src="{% cms_image_url value.author_image %}" alt="{{ value.author_name|default:'Author photo' }}" loading="lazy" decoding="async" />
+            {% else %}
+                {% image value.author_image fill-80x80 alt=value.author_name|default:"Author photo" loading="lazy" decoding="async" %}
+            {% endif %}
+        </span>
+    {% endif %}
+    “{{ value.quote }}”
+    {% if value.author_name %}
+        <cite>— {{ value.author_name }}{% if value.author_title %}, {{ value.author_title }}{% endif %}</cite>
+    {% endif %}
+</p>

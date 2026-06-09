@@ -1,0 +1,48 @@
+{% load wagtailimages_tags cba_tags %}
+<section class="cba-home__block cba-home__block--white cba-home__why-resilience" aria-labelledby="feature-{{ block.id }}">
+    <div class="cba-home__why cba-home__why--with-visual">
+        <header class="cba-home__why-header">
+            <h2 id="feature-{{ block.id }}" class="cba-home__section-heading">{{ value.heading }}</h2>
+            {% if value.subheading %}
+                <p class="cba-home__why-deck">{{ value.subheading }}</p>
+            {% endif %}
+        </header>
+        <div class="cba-home__why-visual-layout{% if value.image_position == 'right' %} cba-home__why-visual-layout--reverse{% endif %}">
+            {% if value.image %}
+                <figure class="cba-home__resilience-framework">
+                    {% if value.image.file.name|slice:"-4:" == ".svg" %}
+                        <img
+                            class="cba-home__resilience-framework-img"
+                            src="{% cms_image_url value.image %}"
+                            width="558"
+                            height="455"
+                            alt="{{ value.heading }}"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    {% else %}
+                        {% image value.image width-558 class="cba-home__resilience-framework-img" alt=value.heading loading="lazy" decoding="async" %}
+                    {% endif %}
+                </figure>
+            {% endif %}
+            <div class="cba-home__why-copy">
+                <div class="cba-home__why-body">
+                    {{ value.body }}
+                </div>
+                {% if value.outcomes %}
+                    <aside class="cba-home__why-outcomes" aria-labelledby="outcomes-{{ block.id }}">
+                        <h3 id="outcomes-{{ block.id }}" class="cba-home__why-subhead cba-home__why-subhead--outcomes">{{ value.outcomes_heading }}</h3>
+                        <ul class="cba-home__why-list">
+                            {% for item in value.outcomes %}
+                                <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </aside>
+                {% endif %}
+                {% if value.button_text and value.button_link|link_url %}
+                    <a class="cba-home__btn-tab" href="{% resolve_link_url value.button_link %}">{{ value.button_text }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

@@ -42,6 +42,29 @@ Admin: http://127.0.0.1:8000/admin/
 
 Uses SQLite and console email backend by default (`cba_site.settings.dev`).
 
+### Frontend CSS (SCSS)
+
+Styles are authored in `frontend/scss/` (copied from `cba-theme`) and compiled to `cba_site/static/css/main.css`:
+
+```bash
+npm install
+npm run build:css      # one-off compile (production)
+npm run watch:css      # recompile on save while developing
+```
+
+Structure:
+
+| Folder | Purpose |
+|--------|---------|
+| `foundation/` | Variables, mixins, base tokens |
+| `components/` | Buttons, cards, tabs, navbar |
+| `pages/` | Homepage, contact, legal/static pages |
+| `partials/` | Header, footer |
+| `themes/` | Dark mode |
+| `wagtail/` | CMS-only styles (catalog, new blocks, etc.) |
+
+Bootstrap 4 stays on CDN in `templates/base.html`; CBA branding lives in compiled `main.css`.
+
 ## Production deployment (DigitalOcean)
 
 Follow runbook section 5 on a separate Droplet from Open edX:

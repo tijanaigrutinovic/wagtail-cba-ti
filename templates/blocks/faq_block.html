@@ -1,0 +1,20 @@
+<section class="faq-section" id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% if value.heading %}
+                    <h2 id="faq-heading" class="text-center mb-5">{{ value.heading }}</h2>
+                {% endif %}
+                {% for item in value.items %}
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            {{ item.question }}
+                            <i class="fas fa-plus faq-icon" aria-hidden="true"></i>
+                        </button>
+                        <div class="faq-answer">{{ item.answer|safe }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

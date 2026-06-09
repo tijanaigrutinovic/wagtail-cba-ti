@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block title %}Thank you — CBA Education{% endblock %}
+
+{% block content %}
+<section class="contact-hero thank-you">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Thank you!</h1>
+                {% if page.thank_you_text %}
+                    <div class="thank-you-body">{{ page.thank_you_text|richtext }}</div>
+                {% else %}
+                    <p>Your message has been received. We will get back to you soon.</p>
+                {% endif %}
+                <a href="/" class="btn btn-custom-primary mt-4">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,18 @@
+// Wagtail CMS — styles that live only in this repo.
+// Add catalog, program pages, new StreamField blocks, etc. here.
+//
+// Example:
+// @import "catalog";
+// @import "blocks/hero";
+
+// Bootstrap 4 lacks gap utilities (BS5). Used on contact hero buttons.
+.contact-hero .d-flex.flex-column.flex-sm-row {
+  gap: 1rem;
+}
+
+// Homepage learning tabs — Wagtail uses dynamic radio/panel ids; JS toggles panels.
+.cba-home__learning .cba-home__tab-pill.is-active {
+  background: var(--cba-slate, #1e293b);
+  border-color: var(--cba-slate, #1e293b);
+  color: #fff;
+}

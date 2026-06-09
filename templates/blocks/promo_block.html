@@ -1,0 +1,11 @@
+{% load cba_tags %}
+<section class="cba-home__block cba-home__block--{{ value.background_style }} cba-home__promo">
+    <div class="container">
+        {% if value.badge_text %}<span class="cba-home__promo-badge">{{ value.badge_text }}</span>{% endif %}
+        <h2 class="cba-home__section-heading">{{ value.heading }}</h2>
+        <div class="cba-home__promo-body">{{ value.body }}</div>
+        {% if value.button_text and value.button_link|link_url %}
+            <a class="cba-home__btn-tab" href="{% resolve_link_url value.button_link %}">{{ value.button_text }}</a>
+        {% endif %}
+    </div>
+</section>
