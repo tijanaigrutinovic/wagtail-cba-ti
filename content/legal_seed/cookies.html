@@ -1,0 +1,239 @@
+<%namespace name='static' file='../static_content.html'/>
+<%page expression_filter="h"/>
+<%! from django.utils.translation import gettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="title">Cookie Policy - Center for Business Acceleration</%block>
+
+<%block name="content">
+    <!-- Cookies Hero Section -->
+    <section class="cookies-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Cookie Policy</h1>
+                    <p>This policy explains what cookies and similar technologies we use on cbaeducation.com, why we use them, and how you can manage your preferences.</p>
+                    <div class="cookies-badges">
+                        <span class="badge badge-light">Essential Cookies</span>
+                        <span class="badge badge-light">Preference Cookies</span>
+                        <span class="badge badge-light">Analytics (optional)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cookies Content -->
+    <section class="cookies-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Last Updated -->
+                    <div class="text-center mb-5">
+                        <p class="text-muted"><strong>Last Updated:</strong> June 9, 2026</p>
+                    </div>
+
+                    <!-- Table of Contents -->
+                    <div class="table-of-contents">
+                        <h3>Table of Contents</h3>
+                        <ul>
+                            <li><a href="#introduction">1. Introduction</a></li>
+                            <li><a href="#what-are-cookies">2. What Are Cookies?</a></li>
+                            <li><a href="#cookies-we-use">3. Cookies We Use</a></li>
+                            <li><a href="#consent-banner">4. Cookie Consent Banner</a></li>
+                            <li><a href="#managing-cookies">5. Managing Your Preferences</a></li>
+                            <li><a href="#third-party">6. Third-Party Cookies</a></li>
+                            <li><a href="#updates">7. Updates to This Policy</a></li>
+                            <li><a href="#contact">8. Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Introduction -->
+                    <div id="introduction" class="cookies-section">
+                        <h2>1. Introduction</h2>
+                        <p>Center for Business Acceleration (&ldquo;CBA,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) uses cookies and similar storage technologies on our public website to provide core functionality, remember your preferences, and&mdash;with your consent&mdash;understand how visitors use our site.</p>
+                        <p>This Cookie Policy should be read together with our <a href="/privacy/">Privacy Policy</a>, which explains how we collect, use, and protect personal information more broadly.</p>
+
+                        <div class="highlight-box">
+                            <p><strong>Your choice:</strong> When you first visit our site, a cookie consent banner lets you accept or decline non-essential cookies. Essential cookies required for security and basic site operation are always used.</p>
+                        </div>
+                    </div>
+
+                    <!-- What Are Cookies -->
+                    <div id="what-are-cookies" class="cookies-section">
+                        <h2>2. What Are Cookies?</h2>
+                        <p>Cookies are small text files stored on your device when you visit a website. Similar technologies include local storage (used by your browser to save data locally) and session storage.</p>
+
+                        <h3>Types by duration</h3>
+                        <ul>
+                            <li><strong>Session cookies:</strong> Deleted when you close your browser.</li>
+                            <li><strong>Persistent cookies:</strong> Remain on your device for a set period or until you delete them.</li>
+                        </ul>
+
+                        <h3>Types by purpose</h3>
+                        <ul>
+                            <li><strong>Strictly necessary:</strong> Required for the site to work (security, load balancing, consent storage).</li>
+                            <li><strong>Functional / preference:</strong> Remember choices such as display theme.</li>
+                            <li><strong>Analytics:</strong> Help us understand traffic and usage patterns (only loaded if you accept cookies).</li>
+                            <li><strong>Marketing:</strong> Used to deliver relevant advertising (we do not currently use marketing cookies on this site).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Cookies We Use -->
+                    <div id="cookies-we-use" class="cookies-section">
+                        <h2>3. Cookies We Use</h2>
+                        <p>The table below lists cookies and local storage keys used on cbaeducation.com at the time of this policy. We will update this page if our use changes.</p>
+
+                        <h3>Strictly necessary</h3>
+                        <div class="cookie-table-wrap">
+                            <table class="cookie-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Purpose</th>
+                                        <th>Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>csrftoken</code></td>
+                                        <td>HTTP cookie</td>
+                                        <td>Protects forms and actions against cross-site request forgery (CSRF).</td>
+                                        <td>1 year (browser session may end sooner)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>sessionid</code></td>
+                                        <td>HTTP cookie</td>
+                                        <td>Maintains your signed-in session when you log in to administrative or authenticated areas.</td>
+                                        <td>Session (until browser closes)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>cookie_consent</code></td>
+                                        <td>localStorage</td>
+                                        <td>Stores whether you accepted or declined non-essential cookies via our consent banner.</td>
+                                        <td>Until you clear site data</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Functional / preference</h3>
+                        <div class="cookie-table-wrap">
+                            <table class="cookie-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Type</th>
+                                        <th>Purpose</th>
+                                        <th>Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>cba-theme</code></td>
+                                        <td>localStorage &amp; HTTP cookie</td>
+                                        <td>Remembers your light or dark display theme preference.</td>
+                                        <td>1 year</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3>Analytics (optional &mdash; only if you click &ldquo;Accept All&rdquo;)</h3>
+                        <p>We may enable analytics tools such as Google Analytics in the future. If enabled, they will only load after you accept cookies in our banner. When active, typical analytics cookies may include:</p>
+                        <div class="cookie-table-wrap">
+                            <table class="cookie-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Provider</th>
+                                        <th>Purpose</th>
+                                        <th>Duration</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>_ga</code></td>
+                                        <td>Google Analytics</td>
+                                        <td>Distinguishes unique visitors for usage statistics.</td>
+                                        <td>2 years</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>_ga_*</code></td>
+                                        <td>Google Analytics</td>
+                                        <td>Maintains session state for analytics.</td>
+                                        <td>2 years</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p><em>Analytics cookies are not set until you accept non-essential cookies and until we configure an analytics provider.</em></p>
+                    </div>
+
+                    <!-- Consent Banner -->
+                    <div id="consent-banner" class="cookies-section">
+                        <h2>4. Cookie Consent Banner</h2>
+                        <p>On your first visit, we show a banner at the bottom of the page asking you to accept or decline non-essential cookies (such as analytics).</p>
+                        <ul>
+                            <li><strong>Accept All:</strong> We may load optional analytics scripts and set related cookies.</li>
+                            <li><strong>Decline:</strong> We do not load optional analytics scripts. Strictly necessary and preference cookies still apply so the site functions correctly.</li>
+                        </ul>
+                        <p>Your choice is stored in your browser under the key <code>cookie_consent</code> with a value of <code>accepted</code> or <code>declined</code>. The banner will not appear again on the same browser unless you clear site data.</p>
+                    </div>
+
+                    <!-- Managing Cookies -->
+                    <div id="managing-cookies" class="cookies-section">
+                        <h2>5. Managing Your Preferences</h2>
+                        <p>You can change or withdraw consent at any time by:</p>
+                        <ul>
+                            <li>Clearing cookies and local storage for cbaeducation.com in your browser settings, then revisiting the site to see the consent banner again.</li>
+                            <li>Using your browser&rsquo;s privacy or cookie settings to block third-party or all cookies (note: blocking essential cookies may affect site functionality).</li>
+                        </ul>
+
+                        <h3>Browser help links</h3>
+                        <ul>
+                            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
+                            <li><a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
+                            <li><a href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari</a></li>
+                            <li><a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Third Party -->
+                    <div id="third-party" class="cookies-section">
+                        <h2>6. Third-Party Cookies</h2>
+                        <p>Some pages may load content from third parties (for example, fonts or CDN-hosted libraries). Those providers may set their own cookies according to their policies. We do not control third-party cookies.</p>
+                        <p>We use jsDelivr and Google Fonts to deliver stylesheets and scripts. Review their privacy policies for details on any data they collect.</p>
+                    </div>
+
+                    <!-- Updates -->
+                    <div id="updates" class="cookies-section">
+                        <h2>7. Updates to This Policy</h2>
+                        <p>We may update this Cookie Policy when we add new tools, change how cookies are used, or to reflect legal requirements. We will revise the &ldquo;Last Updated&rdquo; date at the top of this page when changes are published.</p>
+                    </div>
+
+                    <!-- Contact -->
+                    <div id="contact" class="cookies-section">
+                        <h2>8. Contact Us</h2>
+                        <p>If you have questions about this Cookie Policy or our use of cookies, contact us:</p>
+
+                        <div class="contact-info">
+                            <h4>Center for Business Acceleration</h4>
+                            <p>6440 Sky Pointe Dr #140-550</p>
+                            <p>Las Vegas, Nevada 89131</p>
+                            <p><strong>Phone:</strong> (240) 715-6200</p>
+                            <p><strong>Email:</strong> <a href="mailto:info@cbaeducation.com">info@cbaeducation.com</a></p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <p><strong>Related policy:</strong> For information about how we handle personal data beyond cookies, see our <a href="/privacy/">Privacy Policy</a>.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</%block>

@@ -12,7 +12,204 @@
 
 // Homepage learning tabs — Wagtail uses dynamic radio/panel ids; JS toggles panels.
 .cba-home__learning .cba-home__tab-pill.is-active {
-  background: var(--cba-slate, #1e293b);
-  border-color: var(--cba-slate, #1e293b);
-  color: #fff;
+  background: var(--tab-active-bg, #{$cba-slate}) !important;
+  border-color: var(--tab-active-bg, #{$cba-slate}) !important;
+  color: var(--tab-active-text, #{$cba-white}) !important;
+}
+
+.cba-cookie-banner {
+  position: fixed;
+  z-index: 9999;
+  bottom: 1.25rem;
+  left: 1rem;
+  right: 1rem;
+  pointer-events: auto;
+
+  &.is-hidden {
+    display: none !important;
+    pointer-events: none;
+  }
+
+  &.is-visible .cba-cookie-banner__card,
+  &:not(.is-hidden) .cba-cookie-banner__card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__card {
+    max-width: 52rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-elevated, #{$cba-white});
+    border: 1px solid var(--border-color, #{$cba-border});
+    border-radius: $radius-lg;
+    box-shadow: var(--shadow-lg, 0 12px 40px rgba($cba-slate-900, 0.14));
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.2s ease;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    flex-shrink: 0;
+    border-radius: $radius-base;
+    background: $cba-amber-tint;
+    color: $cba-amber;
+
+    i {
+      font-size: 1.35rem;
+    }
+  }
+
+  &__content {
+    min-width: 0;
+  }
+
+  &__heading {
+    margin: 0 0 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted, #{$cba-gray});
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--text-primary, #{$cba-slate});
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: $cba-teal;
+    text-decoration: none;
+    transition: color 0.2s ease, gap 0.2s ease;
+
+    i {
+      font-size: 0.75rem;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      color: $cba-teal-dark;
+      text-decoration: none;
+
+      i {
+        transform: translateX(2px);
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  &__decline {
+    padding: 0.35rem 0.75rem;
+    border: 0;
+    background: transparent;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-muted, #{$cba-gray});
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--text-primary, #{$cba-slate});
+    }
+  }
+
+  &__accept {
+    padding: 0.55rem 1.35rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .cba-cookie-banner {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+
+    &__card {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto auto;
+      gap: 1rem;
+      padding: 1.125rem 1.125rem 1rem;
+    }
+
+    &__icon {
+      width: 2.75rem;
+      height: 2.75rem;
+
+      i {
+        font-size: 1.2rem;
+      }
+    }
+
+    &__content {
+      grid-column: 2;
+    }
+
+    &__actions {
+      grid-column: 1 / -1;
+      flex-direction: row-reverse;
+      gap: 0.75rem;
+
+      .btn,
+      .cba-cookie-banner__decline {
+        flex: 1 1 0;
+        text-align: center;
+      }
+
+      .cba-cookie-banner__decline {
+        order: 1;
+        padding: 0.55rem 0.75rem;
+        border: 1px solid var(--border-color, #{$cba-border});
+        border-radius: $radius-pill;
+      }
+    }
+  }
+}
+
+[data-theme="dark"] {
+  .cba-cookie-banner {
+    &__icon {
+      background: rgba($cba-amber, 0.15);
+      color: $cba-amber;
+    }
+
+    &__link {
+      color: var(--cba-link-on-dark, #{$cba-teal-bright});
+
+      &:hover {
+        color: var(--cba-link-on-dark-hover, #{$cba-teal-bright-hover});
+      }
+    }
+
+    &__decline:hover {
+      color: var(--text-primary, #{$cba-dm-text-primary});
+    }
+  }
 }

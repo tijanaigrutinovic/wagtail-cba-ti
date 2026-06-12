@@ -1,7 +1,8 @@
 // Static pages — Privacy & Terms (Palette B: slate + teal + amber, matches home)
 
 .privacy-hero,
-.terms-hero {
+.terms-hero,
+.cookies-hero {
   // Warm accent (amber tint) + surface — distinct from plain gray band
   background: $cba-static-hero-bg;
   border-bottom: 1px solid $cba-border-amber-muted;
@@ -30,7 +31,8 @@
   }
 
   .privacy-badges,
-  .terms-badges {
+  .terms-badges,
+  .cookies-badges {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
@@ -49,7 +51,8 @@
 }
 
 .privacy-content,
-.terms-content {
+.terms-content,
+.cookies-content {
   padding: 4rem 0 5rem;
 
   .container {
@@ -57,7 +60,8 @@
   }
 
   .privacy-section,
-  .terms-section {
+  .terms-section,
+  .cookies-section {
     margin-bottom: 3rem;
 
     h2 {
@@ -145,6 +149,54 @@
         }
       }
     }
+  }
+}
+
+.cookie-table-wrap {
+  overflow-x: auto;
+  margin: 1.25rem 0 2rem;
+  border: 1px solid $cba-border;
+  border-radius: $radius-base;
+  box-shadow: $shadow-sm;
+}
+
+.cookie-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  font-size: $font-size-sm;
+  background: $cba-white;
+
+  th,
+  td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid $cba-border;
+  }
+
+  th {
+    background: $cba-surface;
+    color: $cba-slate;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  td {
+    color: $cba-gray;
+    line-height: 1.5;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  code {
+    font-size: 0.85em;
+    color: $cba-teal-dark;
+    background: $cba-teal-a08;
+    padding: 0.15rem 0.4rem;
+    border-radius: $radius-sm;
   }
 }
 

@@ -8,6 +8,10 @@
     {% with hero_class="terms-hero" badge_class="terms-badges" content_class="terms-content" %}
         {% include "content/includes/legal_page_sections.html" %}
     {% endwith %}
+{% elif page.slug == "cookies" %}
+    {% with hero_class="cookies-hero" badge_class="cookies-badges" content_class="cookies-content" %}
+        {% include "content/includes/legal_page_sections.html" %}
+    {% endwith %}
 {% else %}
     {% with hero_class="privacy-hero" badge_class="privacy-badges" content_class="privacy-content" %}
         {% include "content/includes/legal_page_sections.html" %}

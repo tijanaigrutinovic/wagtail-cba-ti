@@ -216,13 +216,19 @@ html[data-theme="dark"] body {
     }
 
     &__tab-pill {
-      background: var(--bg-body) !important;
+      background: var(--tab-bg, var(--bg-body)) !important;
       border-color: var(--border-color) !important;
-      color: var(--text-secondary) !important;
+      color: var(--tab-text, var(--text-secondary)) !important;
 
       &:hover {
         border-color: $cba-teal-bright-a45 !important;
         color: var(--text-primary) !important;
+      }
+
+      &.is-active {
+        background: var(--tab-active-bg) !important;
+        border-color: var(--tab-active-bg) !important;
+        color: var(--tab-active-text) !important;
       }
     }
 
@@ -422,7 +428,8 @@ html[data-theme="dark"] body {
   
   // Privacy & Terms Pages - dark mode
   .privacy-hero,
-  .terms-hero {
+  .terms-hero,
+  .cookies-hero {
     background: linear-gradient(
       165deg,
       $cba-amber-a14 0%,
@@ -443,9 +450,11 @@ html[data-theme="dark"] body {
   }
   
   .privacy-content,
-  .terms-content {
+  .terms-content,
+  .cookies-content {
     .privacy-section,
-    .terms-section {
+    .terms-section,
+    .cookies-section {
       h2 {
         color: var(--cba-primary) !important;
       }
@@ -474,6 +483,30 @@ html[data-theme="dark"] body {
     
     p {
       color: var(--text-primary) !important;
+    }
+  }
+
+  .cookie-table-wrap {
+    border-color: var(--border-color) !important;
+  }
+
+  .cookie-table {
+    background: var(--bg-body) !important;
+
+    th {
+      background: var(--bg-body) !important;
+      color: var(--text-primary) !important;
+      border-color: var(--border-color) !important;
+    }
+
+    td {
+      color: var(--text-secondary) !important;
+      border-color: var(--border-color) !important;
+    }
+
+    code {
+      color: var(--cba-accent-ui) !important;
+      background: $cba-teal-a12 !important;
     }
   }
   

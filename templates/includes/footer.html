@@ -3,7 +3,7 @@
 
 <footer class="footer">
     <div class="section-inner">
-        <div class="row align-items-start footer-top">
+        <div class="row align-items-center footer-top">
             <div class="col-md-4">
                 <div class="footer-brand d-flex align-items-center">
                     <img src="{% static 'cba/images/logo.svg' %}" alt="Center for Business Acceleration">
@@ -17,21 +17,29 @@
                             <li><a href="{% resolve_link_url item.value %}">{{ item.value.label }}</a></li>
                         {% endfor %}
                     </ul>
-                    {% if settings.core.FooterSettings.legal_links %}
-                        <div class="footer-legal-links">
-                            {% for item in settings.core.FooterSettings.legal_links %}
-                                <a href="{% resolve_link_url item.value %}">{{ item.value.label }}</a>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
                 </nav>
             </div>
         </div>
 
+        {% if settings.core.FooterSettings.legal_links %}
+            <nav class="footer-legal-links footer-legal-links--mobile" aria-label="Legal">
+                {% for item in settings.core.FooterSettings.legal_links %}
+                    <a href="{% resolve_link_url item.value %}">{{ item.value.label }}</a>
+                {% endfor %}
+            </nav>
+        {% endif %}
+
         <hr class="footer-divider">
 
-        <div class="footer-copyright text-center">
-            <p class="mb-0">© {{ settings.core.FooterSettings.copyright_text }}</p>
+        <div class="footer-bottom">
+            <p class="footer-copyright mb-0">© {{ settings.core.FooterSettings.copyright_text }}</p>
+            {% if settings.core.FooterSettings.legal_links %}
+                <nav class="footer-legal-links footer-legal-links--desktop" aria-label="Legal">
+                    {% for item in settings.core.FooterSettings.legal_links %}
+                        <a href="{% resolve_link_url item.value %}">{{ item.value.label }}</a>
+                    {% endfor %}
+                </nav>
+            {% endif %}
         </div>
     </div>
 </footer>

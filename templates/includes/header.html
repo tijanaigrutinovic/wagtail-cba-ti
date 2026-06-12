@@ -8,10 +8,19 @@
                 <img src="{% static 'cba/images/logo.svg' %}" alt="Center for Business Acceleration">
             </a>
 
-            <button class="navbar-toggler cba-nav__toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="cba-nav__header-controls d-flex align-items-center ml-auto">
+                <div class="custom-control custom-switch cba-nav__theme-switch d-flex align-items-center">
+                    <input type="checkbox" class="custom-control-input" id="themeToggle" aria-label="Toggle dark mode">
+                    <label class="custom-control-label mb-0" for="themeToggle">
+                        <span class="cba-nav__theme-label">Dark mode</span>
+                    </label>
+                </div>
+
+                <button class="navbar-toggler cba-nav__toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
             <div class="collapse navbar-collapse cba-nav__collapse" id="navbarNav">
                 <div class="cba-nav__row d-flex flex-column flex-lg-row align-items-lg-center ml-lg-auto">
@@ -28,15 +37,8 @@
                         </li>
                     </ul>
 
-                    <div class="cba-nav__actions d-flex flex-column flex-lg-row align-items-lg-center">
-                        <div class="d-flex flex-column flex-lg-row align-items-center mb-3 mb-lg-0">
-                            <a href="{{ settings.core.NavigationSettings.login_url }}" class="cba-nav__login mb-2 mb-lg-0 mr-lg-2">Login</a>
-                        </div>
-
-                        <div class="custom-control custom-switch cba-nav__theme-switch d-flex align-items-center ml-lg-3 mt-3 mt-lg-0">
-                            <input type="checkbox" class="custom-control-input" id="themeToggle" aria-label="Toggle dark mode">
-                            <label class="custom-control-label mb-0" for="themeToggle"></label>
-                        </div>
+                    <div class="cba-nav__actions d-flex flex-lg-row align-items-lg-center">
+                        <a href="{{ settings.core.NavigationSettings.login_url }}" class="cba-nav__login">Login</a>
                     </div>
                 </div>
             </div>

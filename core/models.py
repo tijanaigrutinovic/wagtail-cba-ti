@@ -8,6 +8,41 @@ from core.link_blocks import LinkBlock
 
 
 @register_setting
+class CookieConsentSettings(BaseSiteSetting):
+    enabled = models.BooleanField(
+        default=True,
+        help_text="Show the cookie consent banner on the public site.",
+    )
+    message = models.TextField(
+        default=(
+            "We use cookies to improve your experience and analyze site traffic."
+        ),
+    )
+    accept_button_text = models.CharField(max_length=50, default="Accept All")
+    decline_button_text = models.CharField(max_length=50, default="Decline")
+    learn_more_link = StreamField(
+        [("link", LinkBlock())],
+        use_json_field=True,
+        max_num=1,
+        blank=True,
+        help_text="Optional link to the privacy policy (or other policy page).",
+    )
+
+    panels = [
+        FieldPanel("enabled"),
+        FieldPanel("message"),
+        FieldRowPanel([
+            FieldPanel("accept_button_text"),
+            FieldPanel("decline_button_text"),
+        ]),
+        FieldPanel("learn_more_link"),
+    ]
+
+    class Meta:
+        verbose_name = "Cookie consent"
+
+
+@register_setting
 class NavigationSettings(BaseSiteSetting):
     nav_links = StreamField(
         [("link", LinkBlock())],

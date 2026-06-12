@@ -1,0 +1,44 @@
+{% load wagtailsettings_tags cba_tags %}
+{% get_settings %}
+
+{% if settings.core.CookieConsentSettings.enabled %}
+    <div
+        id="cookie-banner"
+        class="cba-cookie-banner"
+        role="dialog"
+        aria-labelledby="cookie-banner-title"
+        aria-describedby="cookie-banner-desc"
+        aria-live="polite"
+        aria-hidden="false"
+    >
+        <div class="cba-cookie-banner__card">
+            <div class="cba-cookie-banner__icon" aria-hidden="true">
+                <i class="fas fa-cookie-bite"></i>
+            </div>
+
+            <div class="cba-cookie-banner__content">
+                <p id="cookie-banner-title" class="cba-cookie-banner__heading">Cookies &amp; privacy</p>
+                <p id="cookie-banner-desc" class="cba-cookie-banner__text">
+                    {{ settings.core.CookieConsentSettings.message }}
+                </p>
+                {% with link=settings.core.CookieConsentSettings.learn_more_link.0 %}
+                    {% if link %}
+                        <a class="cba-cookie-banner__link" href="{% resolve_link_url link.value %}">
+                            {{ link.value.label }}
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <div class="cba-cookie-banner__actions">
+                <button type="button" class="cba-cookie-banner__decline">
+                    {{ settings.core.CookieConsentSettings.decline_button_text }}
+                </button>
+                <button type="button" class="btn btn-custom-primary cba-cookie-banner__accept">
+                    {{ settings.core.CookieConsentSettings.accept_button_text }}
+                </button>
+            </div>
+        </div>
+    </div>
+{% endif %}

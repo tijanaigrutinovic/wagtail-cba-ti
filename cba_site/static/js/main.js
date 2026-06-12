@@ -80,9 +80,79 @@
         });
     }
 
+    function initCookieBanner() {
+        var banner = document.getElementById('cookie-banner');
+        if (!banner) return;
+
+        var CONSENT_KEY = 'cookie_consent';
+
+        function hideBanner() {
+            banner.classList.remove('is-visible');
+            banner.classList.add('is-hidden');
+            banner.setAttribute('aria-hidden', 'true');
+        }
+
+        function showBanner() {
+            banner.classList.remove('is-hidden');
+            banner.classList.add('is-visible');
+            banner.setAttribute('aria-hidden', 'false');
+        }
+
+        function setConsent(value) {
+            try {
+                localStorage.setItem(CONSENT_KEY, value);
+            } catch (e) {}
+            window.cookieConsent = value;
+            hideBanner();
+            if (value === 'accepted') {
+                loadAnalytics();
+            }
+        }
+
+        function loadAnalytics() {
+            // Load Google Analytics / other tracking here once tools are confirmed.
+            // Example:
+            // if (typeof gtag === 'function') { gtag('consent', 'update', { analytics_storage: 'granted' }); }
+        }
+
+        window.loadAnalytics = loadAnalytics;
+
+        var acceptBtn = banner.querySelector('.cba-cookie-banner__accept');
+        var declineBtn = banner.querySelector('.cba-cookie-banner__decline');
+
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', function () {
+                setConsent('accepted');
+            });
+        }
+
+        if (declineBtn) {
+            declineBtn.addEventListener('click', function () {
+                setConsent('declined');
+            });
+        }
+
+        var existing = null;
+        try {
+            existing = localStorage.getItem(CONSENT_KEY);
+        } catch (e) {}
+
+        if (existing === 'accepted' || existing === 'declined') {
+            window.cookieConsent = existing;
+            hideBanner();
+            if (existing === 'accepted') {
+                loadAnalytics();
+            }
+            return;
+        }
+
+        showBanner();
+    }
+
     function init() {
         initFaqSections();
         initHomeLearningTabs();
+        initCookieBanner();
     }
 
     window.toggleFaq = toggleFaq;
